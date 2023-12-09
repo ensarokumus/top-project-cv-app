@@ -7,9 +7,9 @@ import {
   FormLabel,
   InputLeftAddon,
 } from "@chakra-ui/react";
-import { example } from "./example.jsx";
+import example from "./example.jsx";
 
-function PersonalDetails() {
+function PersonalDetails({ onChange, fullName }) {
   return (
     <Flex
       direction="column"
@@ -28,12 +28,14 @@ function PersonalDetails() {
         <FormLabel>Full name</FormLabel>
         <Input
           type="text"
-          name="name"
+          id="name"
+          data-key="name"
           variant="flushed"
           borderColor="orange"
           size="sm"
           placeholder="E.g. Mike Richards"
-          value={example.name}
+          defaultValue={fullName}
+          onChange={onChange}
         />
       </FormControl>
       <FormControl isRequired mb="10px">
@@ -45,7 +47,7 @@ function PersonalDetails() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. mike.richards@mail.com.au"
-          value={example.email}
+          defaultValue={example.personalInfo.email}
         />
       </FormControl>
       <FormControl isRequired mb="10px">
@@ -62,7 +64,7 @@ function PersonalDetails() {
             name="tel"
             borderColor="orange"
             placeholder="452 000 000"
-            value={example.tel}
+            defaultValue={example.personalInfo.tel}
           />
         </InputGroup>
       </FormControl>
@@ -75,7 +77,7 @@ function PersonalDetails() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          value={example.address}
+          defaultValue={example.personalInfo.address}
         />
       </FormControl>
     </Flex>

@@ -6,7 +6,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { DeleteIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-import { example } from "./example.jsx";
+import example from "./example.jsx";
 
 function Education() {
   return (
@@ -20,7 +20,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney University"
-          defaultValue={example.education[0].school}
+          defaultValue={example.sections.education[0].school}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -32,7 +32,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Computer Engineering"
-          defaultValue={example.education[0].degree}
+          defaultValue={example.sections.education[0].degree}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -44,7 +44,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. 09/2009"
-          defaultValue={example.education[0].startDate}
+          // defaultValue={example.sections.education[0].startDate}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -56,7 +56,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. 06/2013"
-          defaultValue={example.education[0].endDate}
+          // defaultValue={example.sections.education[0].endDate}
         />
       </FormControl>
       <FormControl mb="20px">
@@ -68,7 +68,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          defaultValue={example.education[0].location}
+          // defaultValue={example.sections.education[0].location}
         />
       </FormControl>
       <Stack direction="row">

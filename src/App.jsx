@@ -1,5 +1,5 @@
-// import { useState } from "react";
 // import "./App.css";
+import { useState } from "react";
 import {
   Flex,
   Box,
@@ -10,15 +10,28 @@ import {
   AccordionIcon,
   Heading,
 } from "@chakra-ui/react";
+import example from "./components/example.jsx";
 import Education from "./components/Education.jsx";
 import PersonalDetails from "./components/PersonalDetails.jsx";
 import Experience from "./components/Experience.jsx";
+import Resume from "./components/Resume.jsx";
 
 function App() {
+  const [personalInfo, setPersonalInfo] = useState(example.personalInfo);
+  
+  function handlePersonalInfoChange(e) {
+    const { key } = e.target.dataset;
+    setPersonalInfo({ ...personalInfo, [key]: e.target.value });
+    console.log(personalInfo);
+  }
+
   return (
-    <>
+    <Flex>
       <Flex direction="column">
-        <PersonalDetails />
+        <PersonalDetails
+          name={personalInfo.name}
+          onChange={handlePersonalInfoChange}
+        />
         <Accordion allowToggle>
           <Flex
             direction="column"
@@ -59,7 +72,8 @@ function App() {
           </Flex>
         </Accordion>
       </Flex>
-    </>
+      <Resume personalInfo={personalInfo}/>
+    </Flex>
   );
 }
 
