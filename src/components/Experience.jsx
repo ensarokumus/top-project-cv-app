@@ -8,31 +8,31 @@ import {
 import { DeleteIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { example } from "./example.jsx";
 
-function Education() {
+function Experience() {
   return (
     <>
       <FormControl mb="10px">
-        <FormLabel>School</FormLabel>
+        <FormLabel>Company Name</FormLabel>
         <Input
           type="text"
-          name="school"
+          name="company"
           variant="flushed"
           borderColor="orange"
           size="sm"
-          placeholder="E.g. Sydney University"
-          defaultValue={example.education[0].school}
+          placeholder="E.g. Redfin"
+          defaultValue={example.experience[0].company}
         />
       </FormControl>
       <FormControl mb="10px">
-        <FormLabel>Degree</FormLabel>
+        <FormLabel>Position Title</FormLabel>
         <Input
           type="text"
-          name="degree"
+          name="title"
           variant="flushed"
           borderColor="orange"
           size="sm"
-          placeholder="E.g. Computer Engineering"
-          defaultValue={example.education[0].degree}
+          placeholder="E.g. Junior Software Engineer"
+          defaultValue={example.experience[0].position}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -43,8 +43,8 @@ function Education() {
           variant="flushed"
           borderColor="orange"
           size="sm"
-          placeholder="E.g. 09/2009"
-          defaultValue={example.education[0].startDate}
+          placeholder="E.g. 07/2013"
+          defaultValue={example.experience[0].startDate}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -55,8 +55,8 @@ function Education() {
           variant="flushed"
           borderColor="orange"
           size="sm"
-          placeholder="E.g. 06/2013"
-          defaultValue={example.education[0].endDate}
+          placeholder="E.g. 06/2015"
+          defaultValue={example.experience[0].endDate}
         />
       </FormControl>
       <FormControl mb="20px">
@@ -68,32 +68,17 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          defaultValue={example.education[0].location}
+          defaultValue={example.experience[0].location}
         />
       </FormControl>
-      <Stack direction="row">
-        <Button
-          leftIcon={<DeleteIcon />}
-          colorScheme="orange"
-          variant="outline"
-          size="sm"
-        >
+      <Stack direction='row'>
+        <Button leftIcon={<DeleteIcon />} colorScheme="orange" variant="outline" size='sm'>
           Delete
         </Button>
-        <Button
-          leftIcon={<CloseIcon />}
-          colorScheme="orange"
-          variant="outline"
-          size="sm"
-        >
+        <Button leftIcon={<CloseIcon />} colorScheme="orange" variant="outline" size='sm'>
           Cancel
         </Button>
-        <Button
-          leftIcon={<AddIcon />}
-          colorScheme="orange"
-          variant="solid"
-          size="sm"
-        >
+        <Button leftIcon={<AddIcon />} colorScheme="orange" variant="solid" size='sm'>
           Save
         </Button>
       </Stack>
@@ -101,4 +86,4 @@ function Education() {
   );
 }
 
-export default Education;
+export default Experience;

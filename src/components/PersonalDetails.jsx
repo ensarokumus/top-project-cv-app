@@ -7,8 +7,7 @@ import {
   FormLabel,
   InputLeftAddon,
 } from "@chakra-ui/react";
-import { example } from './example.jsx'
-
+import { example } from "./example.jsx";
 
 function PersonalDetails() {
   return (
@@ -51,8 +50,9 @@ function PersonalDetails() {
       </FormControl>
       <FormControl isRequired mb="10px">
         <FormLabel>Phone Number</FormLabel>
-        <InputGroup size='sm' >
+        <InputGroup size="sm">
           <InputLeftAddon
+            // eslint-disable-next-line
             children="+61"
             borderColor="orange"
             backgroundColor="orange"
