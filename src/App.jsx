@@ -18,18 +18,21 @@ import Resume from "./components/Resume.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState(example.personalInfo);
+  // console.log(personalInfo);
   
   function handlePersonalInfoChange(e) {
     const { key } = e.target.dataset;
     setPersonalInfo({ ...personalInfo, [key]: e.target.value });
-    console.log(personalInfo);
   }
 
   return (
     <Flex>
       <Flex direction="column">
         <PersonalDetails
-          name={personalInfo.name}
+          fullName={personalInfo.name}
+          email={personalInfo.email}
+          phone={personalInfo.phone}
+          address={personalInfo.address}
           onChange={handlePersonalInfoChange}
         />
         <Accordion allowToggle>

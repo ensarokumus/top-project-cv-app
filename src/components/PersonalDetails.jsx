@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import example from "./example.jsx";
 
-function PersonalDetails({ onChange, fullName }) {
+function PersonalDetails({ onChange, fullName, email, phone, address }) {
   return (
     <Flex
       direction="column"
@@ -28,7 +28,6 @@ function PersonalDetails({ onChange, fullName }) {
         <FormLabel>Full name</FormLabel>
         <Input
           type="text"
-          id="name"
           data-key="name"
           variant="flushed"
           borderColor="orange"
@@ -42,12 +41,13 @@ function PersonalDetails({ onChange, fullName }) {
         <FormLabel>Email</FormLabel>
         <Input
           type="email"
-          name="email"
+          data-key="email"
           variant="flushed"
           borderColor="orange"
           size="sm"
           placeholder="E.g. mike.richards@mail.com.au"
-          defaultValue={example.personalInfo.email}
+          defaultValue={email}
+          onChange={onChange}
         />
       </FormControl>
       <FormControl isRequired mb="10px">
@@ -61,10 +61,13 @@ function PersonalDetails({ onChange, fullName }) {
           />
           <Input
             type="tel"
-            name="tel"
+            data-key="phone"
+            variant="flushed"
             borderColor="orange"
+            size="sm"
             placeholder="452 000 000"
-            defaultValue={example.personalInfo.tel}
+            defaultValue={phone}
+            onChange={onChange}
           />
         </InputGroup>
       </FormControl>
@@ -72,12 +75,13 @@ function PersonalDetails({ onChange, fullName }) {
         <FormLabel>Address</FormLabel>
         <Input
           type="text"
-          name="address"
+          data-key="address"
           variant="flushed"
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          defaultValue={example.personalInfo.address}
+          defaultValue={address}
+          onChange={onChange}
         />
       </FormControl>
     </Flex>
