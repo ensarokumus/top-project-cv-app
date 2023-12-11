@@ -24,7 +24,7 @@ function EducationSection({ educationsSection }) {
     <>
       <Box mb="3">
         <Flex justify="end">
-          <Box w="85%" h="200px">
+          <Box w="85%" pb='5'>
             <Heading as="h2" fontSize="2xl" pt="2" pb="2">
               EDUCATION
             </Heading>

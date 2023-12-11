@@ -1,11 +1,11 @@
-import { Flex, Heading, Box } from "@chakra-ui/react";
+import { Flex, Heading, AspectRatio } from "@chakra-ui/react";
 import PersonalDetailsSection from "./PersonalDetailsSection";
 import EducationSection from "./EducationSection";
 import ExperienceSection from "./ExperienceSection";
 
 function Resume({ personalInfo, educationsSection, experiencesSection }) {
   return (
-    <Flex m="6" ml="0" borderWidth="2px" borderColor='orange' h='85vh'>
+    <Flex m="6" ml="0" borderWidth="2px" borderColor='orange' maxW='950px' minW='800px' minH='1200px'>
       <Flex
         direction="column"
         color="white"
@@ -23,13 +23,11 @@ function Resume({ personalInfo, educationsSection, experiencesSection }) {
       </Flex>
       <Flex
         direction="column"
-        color="#212027"
         backgroundColor="white"
-        // justify="space-between"
       >
-        <Flex backgroundColor="orange" w='600px' h='142px' direction='column' justifyContent='center' mt='24px' mb='24px'>
-          <Heading as='h1' fontSize='3rem' textAlign='center'>{personalInfo.name}</Heading>
-          <Heading as='h2' fontSize='1.5rem' textAlign='center'>{educationsSection[0].degree}</Heading>
+        <Flex backgroundColor="orange" h='142px' direction='column' justifyContent='center' mt='24px' mb='24px'>
+          <Heading as='h1' fontSize='3rem' color='#363740' textAlign='center'>{personalInfo.name}</Heading>
+          <Heading as='h2' fontSize='1.5rem' color='#535565' textAlign='center'>{experiencesSection[experiencesSection.length - 1].position}</Heading>
         </Flex>
         <ExperienceSection experiencesSection={experiencesSection} />
       </Flex>

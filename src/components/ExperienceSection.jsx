@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Divider, Text } from "@chakra-ui/react";
 
 function ExperienceSection({ experiencesSection }) {
   const experiencesList = experiencesSection.toReversed().map((experience) => (
-    <Box key={experience.degree}>
+    <Box key={experience.company}>
       <Heading as="h3" fontSize="xl">
         {experience.company}
       </Heading>
@@ -27,7 +27,7 @@ function ExperienceSection({ experiencesSection }) {
     <>
       <Box ml="10">
         <Flex>
-          <Box w="85%" h="200px">
+          <Box w="85%">
             <Heading as="h2" fontSize="2xl" pt="2" pb="2">
               EXPERIENCE
             </Heading>
