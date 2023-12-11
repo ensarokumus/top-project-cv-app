@@ -8,7 +8,7 @@ import {
 import { DeleteIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import example from "./example.jsx";
 
-function Experience() {
+function experience() {
   return (
     <>
       <FormControl mb="10px">
@@ -20,7 +20,7 @@ function Experience() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Redfin"
-          defaultValue={example.sections.experience[0].company}
+          defaultValue={example.sections.experiences[0].company}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -32,7 +32,7 @@ function Experience() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Junior Software Engineer"
-          defaultValue={example.sections.experience[0].position}
+          defaultValue={example.sections.experiences[0].position}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -44,7 +44,7 @@ function Experience() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. 07/2013"
-          defaultValue={example.sections.experience[0].startDate}
+          defaultValue={example.sections.experiences[0].startDate}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -56,7 +56,7 @@ function Experience() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. 06/2015"
-          defaultValue={example.sections.experience[0].endDate}
+          defaultValue={example.sections.experiences[0].endDate}
         />
       </FormControl>
       <FormControl mb="20px">
@@ -68,7 +68,7 @@ function Experience() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          defaultValue={example.sections.experience[0].location}
+          defaultValue={example.sections.experiences[0].location}
         />
       </FormControl>
       <Stack direction='row'>
@@ -86,4 +86,4 @@ function Experience() {
   );
 }
 
-export default Experience;
+export default experience;

@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import { useState } from "react";
 import {
   Flex,
@@ -18,16 +18,27 @@ import Resume from "./components/Resume.jsx";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState(example.personalInfo);
-  // console.log(personalInfo);
-  
+  const [educationsSection, setEducationsSection] = useState(example.sections.educations);
+  const [experiencesSection, setExperiencesSection] = useState(example.sections.experiences);
+
   function handlePersonalInfoChange(e) {
     const { key } = e.target.dataset;
     setPersonalInfo({ ...personalInfo, [key]: e.target.value });
   }
 
+  function handleEducationsSectionChange(e) {
+    const { key } = e.target.dataset;
+    setEducationsSection({ ...educationsSection, [key]: e.target.value })
+  }
+
+  function handleExperiencesSectionChange(e) {
+    const { key } = e.target.dataset;
+    setExperiencesSection({ ...experiencesSection, [key]: e.target.value })
+  }
+
   return (
-    <Flex>
-      <Flex direction="column">
+    <Flex bgColor='#fff6e5' w='100%' h='100vh'>
+      <Box w="400px">
         <PersonalDetails
           fullName={personalInfo.name}
           email={personalInfo.email}
@@ -42,7 +53,7 @@ function App() {
             p="6"
             m="6"
             borderRadius="lg"
-            borderWidth="1px"
+            borderWidth="2px"
             borderColor="orange"
             justify="space-between"
           >
@@ -56,7 +67,7 @@ function App() {
                 </Heading>
               </AccordionButton>
               <AccordionPanel>
-                <Education />
+                <Education/>
               </AccordionPanel>
             </AccordionItem>
             <AccordionItem>
@@ -74,8 +85,10 @@ function App() {
             </AccordionItem>
           </Flex>
         </Accordion>
+      </Box>
+      <Flex flex="1">
+        <Resume personalInfo={personalInfo} educationsSection={educationsSection} experiencesSection={experiencesSection}/>
       </Flex>
-      <Resume personalInfo={personalInfo}/>
     </Flex>
   );
 }

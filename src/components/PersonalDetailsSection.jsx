@@ -18,7 +18,7 @@ function PersonalDetailsSection({ email, phone, address }) {
           </Flex>
         </Flex>
         <Text pl="80px" fontSize="sm">
-          {phone}
+          {"+61 "}{phone}
         </Text>
       </Box>
       <Box mb="3">
@@ -39,7 +39,7 @@ function PersonalDetailsSection({ email, phone, address }) {
           {email}
         </Text>
       </Box>
-      <Box mb="3">
+      <Box mb="5rem">
         <Flex>
           <Box backgroundColor="orange" w="60px" h="25px"></Box>
           <Flex backgroundColor="#353740" h="25px" pl="20px" as="b" flex="1">

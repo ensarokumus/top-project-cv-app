@@ -20,7 +20,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney University"
-          defaultValue={example.sections.education[0].school}
+          defaultValue={example.sections.educations[0].school}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -32,7 +32,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Computer Engineering"
-          defaultValue={example.sections.education[0].degree}
+          defaultValue={example.sections.educations[0].degree}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -44,7 +44,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. 09/2009"
-          // defaultValue={example.sections.education[0].startDate}
+          defaultValue={example.sections.educations[0].startDate}
         />
       </FormControl>
       <FormControl mb="10px">
@@ -56,7 +56,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. 06/2013"
-          // defaultValue={example.sections.education[0].endDate}
+          defaultValue={example.sections.educations[0].endDate}
         />
       </FormControl>
       <FormControl mb="20px">
@@ -68,7 +68,7 @@ function Education() {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          // defaultValue={example.sections.education[0].location}
+          defaultValue={example.sections.educations[0].location}
         />
       </FormControl>
       <Stack direction="row">

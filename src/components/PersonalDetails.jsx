@@ -17,15 +17,15 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
       p="6"
       m="6"
       borderRadius="lg"
-      borderWidth="1px"
+      borderWidth="2px"
       borderColor="orange"
       justify="space-between"
     >
       <Heading as="h1" size="lg" mb="20px">
         Personal Details
       </Heading>
-      <FormControl isRequired mb="10px">
-        <FormLabel>Full name</FormLabel>
+      <FormControl isRequired mb="20px">
+        <FormLabel mb='0'>Full name</FormLabel>
         <Input
           type="text"
           data-key="name"
@@ -37,8 +37,8 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
           onChange={onChange}
         />
       </FormControl>
-      <FormControl isRequired mb="10px">
-        <FormLabel>Email</FormLabel>
+      <FormControl isRequired mb="20px">
+        <FormLabel mb='0'>Email</FormLabel>
         <Input
           type="email"
           data-key="email"
@@ -50,8 +50,8 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
           onChange={onChange}
         />
       </FormControl>
-      <FormControl isRequired mb="10px">
-        <FormLabel>Phone Number</FormLabel>
+      <FormControl isRequired mb="20px">
+        <FormLabel mb='0'>Phone Number</FormLabel>
         <InputGroup size="sm">
           <InputLeftAddon
             // eslint-disable-next-line
@@ -68,11 +68,12 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
             placeholder="452 000 000"
             defaultValue={phone}
             onChange={onChange}
+            pl='2'
           />
         </InputGroup>
       </FormControl>
       <FormControl isRequired>
-        <FormLabel>Address</FormLabel>
+        <FormLabel mb='0'>Address</FormLabel>
         <Input
           type="text"
           data-key="address"

@@ -2,11 +2,11 @@ const example = {
   personalInfo: {
     name: "Mike Richards",
     email: "mike.richards@mail.com.au",
-    phone: "+61 452 552 52 52",
+    phone: "452 552 52 52",
     address: "Sydney, NSW",
   },
   sections: {
-    education: [
+    educations: [
       {
         school: "Sydney University",
         degree: "Computer Engineering",
@@ -22,7 +22,7 @@ const example = {
         location: "Sydney, NSW",
       },
     ],
-    experience: [
+    experiences: [
       {
         company: "Redfin",
         position: "Junior Software Engineer",
