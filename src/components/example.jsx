@@ -8,6 +8,7 @@ const example = {
   sections: {
     educations: [
       {
+        id: 1,
         school: "Sydney University",
         degree: "Computer Engineering",
         startDate: "09/2009",
@@ -15,6 +16,7 @@ const example = {
         location: "Sydney, NSW",
       },
       {
+        id: 2,
         school: "Lane Cove Cammeraygal High School",
         degree: "Math/Science",
         startDate: "09/2005",
@@ -24,6 +26,7 @@ const example = {
     ],
     experiences: [
       {
+        id: 1,
         company: "Redfin",
         position: "Junior Software Engineer",
         startDate: "07/2013",
@@ -33,6 +36,7 @@ const example = {
           "Fuelled additional revenue stream through responsive customer support, generating $18k in new license sales within first three weeks of new release. Reduced the time by 75% to process 70,000 to 100,000 instruments from 16+ seconds to less than 4 seconds by redesigning the algorithm. Wrote optimised scripts for data-heavy & processing heavy task automation",
       },
       {
+        id: 2,
         company: "Target",
         position: "Software Developer",
         startDate: "07/2015",

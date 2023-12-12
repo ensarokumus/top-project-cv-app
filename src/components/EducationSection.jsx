@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Divider, Text } from "@chakra-ui/react";
 
 function EducationSection({ educationsSection }) {
+  console.log(educationsSection);
   const educationsList = educationsSection.map((education) => (
     <Box key={education.degree}>
       <Heading as="h3" fontSize="md" p="5" pb="0">

@@ -21,9 +21,16 @@ function App() {
   const [educationsSection, setEducationsSection] = useState(
     example.sections.educations
   );
+  let nextEducationId = 3;
+
   const [experiencesSection, setExperiencesSection] = useState(
     example.sections.experiences
   );
+  const [isEditEducation, setEditEducation] = useState(false);
+
+  function handleEditEducation() {
+    setEditEducation(!isEditEducation);
+  }
 
   function handlePersonalInfoChange(e) {
     const { key } = e.target.dataset;
@@ -35,69 +42,79 @@ function App() {
     setEducationsSection({ ...educationsSection, [key]: e.target.value });
   }
 
+  function handleSaveEducation() {
+    nextEducationId++;
+  }
+
   function handleExperiencesSectionChange(e) {
     const { key } = e.target.dataset;
     setExperiencesSection({ ...experiencesSection, [key]: e.target.value });
   }
 
   return (
+    <Flex>
+      <Box minW="350px">
+        <PersonalDetails
+          fullName={personalInfo.name}
+          email={personalInfo.email}
+          phone={personalInfo.phone}
+          address={personalInfo.address}
+          onChange={handlePersonalInfoChange}
+        />
+        <Accordion allowToggle>
+          <Flex
+            direction="column"
+            bg="white"
+            p="6"
+            m="6"
+            borderRadius="lg"
+            borderWidth="2px"
+            borderColor="orange"
+            justify="space-between"
+          >
+            <AccordionItem>
+              <AccordionButton>
+                <Heading as="h1" size="lg">
+                  <Box as="span" flex="1" textAlign="left">
+                    Education
+                  </Box>
+                  <AccordionIcon />
+                </Heading>
+              </AccordionButton>
+              <AccordionPanel>
+                <Education
+                  isEditEducation={isEditEducation}
+                  educationsSection={educationsSection}
+                  onClick={handleEditEducation}
+                  onChange={handleEducationsSectionChange}
+                  onSave={handleSaveEducation}
+                />
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem>
+              <AccordionButton>
+                <Heading as="h1" size="lg">
+                  <Box as="span" flex="1" textAlign="left">
+                    Experience
+                  </Box>
+                  <AccordionIcon />
+                </Heading>
+              </AccordionButton>
+              <AccordionPanel>
+                <Experience />
+              </AccordionPanel>
+            </AccordionItem>
+          </Flex>
+        </Accordion>
+      </Box>
       <Flex>
-        <Box minW="350px">
-          <PersonalDetails
-            fullName={personalInfo.name}
-            email={personalInfo.email}
-            phone={personalInfo.phone}
-            address={personalInfo.address}
-            onChange={handlePersonalInfoChange}
-          />
-          <Accordion allowToggle>
-            <Flex
-              direction="column"
-              bg="white"
-              p="6"
-              m="6"
-              borderRadius="lg"
-              borderWidth="2px"
-              borderColor="orange"
-              justify="space-between"
-            >
-              <AccordionItem>
-                <AccordionButton>
-                  <Heading as="h1" size="lg">
-                    <Box as="span" flex="1" textAlign="left">
-                      Education
-                    </Box>
-                    <AccordionIcon />
-                  </Heading>
-                </AccordionButton>
-                <AccordionPanel>
-                  <Education />
-                </AccordionPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionButton>
-                  <Heading as="h1" size="lg">
-                    <Box as="span" flex="1" textAlign="left">
-                      Experience
-                    </Box>
-                    <AccordionIcon />
-                  </Heading>
-                </AccordionButton>
-                <AccordionPanel>
-                  <Experience />
-                </AccordionPanel>
-              </AccordionItem>
-            </Flex>
-          </Accordion>
-        </Box>
-        <Flex>
-          <Resume
-            personalInfo={personalInfo}
-            educationsSection={educationsSection}
-            experiencesSection={experiencesSection}
-          />
-        </Flex>
+        <Resume
+          personalInfo={personalInfo}
+          educationsSection={educationsSection}
+          experiencesSection={experiencesSection}
+        />
       </Flex>
+    </Flex>
   );
 }
 
