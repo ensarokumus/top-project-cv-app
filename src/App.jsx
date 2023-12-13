@@ -17,34 +17,46 @@ import Experience from "./components/Experience.jsx";
 import Resume from "./components/Resume.jsx";
 
 function App() {
+  // Updating the personal details state on the resume section
   const [personalInfo, setPersonalInfo] = useState(example.personalInfo);
-  const [educationsSection, setEducationsSection] = useState(
-    example.sections.educations
-  );
-  let nextEducationId = 3;
-
-  const [experiencesSection, setExperiencesSection] = useState(
-    example.sections.experiences
-  );
-  const [isEditEducation, setEditEducation] = useState(false);
-
-  function handleEditEducation() {
-    setEditEducation(!isEditEducation);
-  }
-
   function handlePersonalInfoChange(e) {
     const { key } = e.target.dataset;
     setPersonalInfo({ ...personalInfo, [key]: e.target.value });
   }
+  
+  // Education section interactivity
+  const [educationsSection, setEducationsSection] = useState(
+    example.sections.educations
+  );
 
   function handleEducationsSectionChange(e) {
     const { key } = e.target.dataset;
     setEducationsSection({ ...educationsSection, [key]: e.target.value });
   }
 
+  const [isEditEducation, setEditEducation] = useState(false);
+
+  // Deleting one of the education info entries
+  function handleDeleteEntry(deleteEducationID) {
+    setEducationsSection(
+      educationsSection.filter(e => e.id !== deleteEducationID)
+    );
+  }
+
+  let nextEducationId = 3;
+
+  function handleEditEducation() {
+    setEditEducation(!isEditEducation);
+  }
+
   function handleSaveEducation() {
     nextEducationId++;
   }
+
+  // Experience section interactivity
+  const [experiencesSection, setExperiencesSection] = useState(
+    example.sections.experiences
+  );
 
   function handleExperiencesSectionChange(e) {
     const { key } = e.target.dataset;
@@ -53,7 +65,7 @@ function App() {
 
   return (
     <Flex>
-      <Box minW="350px">
+      <Box minW="500px">
         <PersonalDetails
           fullName={personalInfo.name}
           email={personalInfo.email}
@@ -88,6 +100,7 @@ function App() {
                   onClick={handleEditEducation}
                   onChange={handleEducationsSectionChange}
                   onSave={handleSaveEducation}
+                  onDelete={handleDeleteEntry}
                 />
               </AccordionPanel>
             </AccordionItem>

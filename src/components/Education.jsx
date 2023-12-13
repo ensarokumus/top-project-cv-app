@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
   Box,
+  IconButton,
 } from "@chakra-ui/react";
 import { DeleteIcon, CloseIcon, AddIcon, EditIcon } from "@chakra-ui/icons";
 import example from "./example.jsx";
@@ -17,6 +18,7 @@ function Education({
   onClick,
   onChange,
   onSave,
+  onDelete,
 }) {
   if (isEditEducation == true) {
     return (
@@ -117,33 +119,39 @@ function Education({
       </>
     );
   } else {
-    const educationsList = educationsSection.map((education) => (
-      <Flex
-        key={education.degree}
-        p="2"
-        mb="4"
-        borderRadius="lg"
-        borderWidth="2px"
-        borderColor="orange"
-        justify="space-between"
-        align="center"
-      >
-        <Text fontSize="md">{education.school}</Text>
-        <Box w="70px">
-          <EditIcon boxSize="5" ml="2" />
-          <DeleteIcon boxSize="5" ml="2" />
-        </Box>
-      </Flex>
-    ));
     return (
       <Flex direction="column">
-        {educationsList}
+        {educationsSection.map(education => (
+          <Flex
+            key={education.id}
+            p="2"
+            mb="4"
+            borderRadius="lg"
+            borderWidth="2px"
+            borderColor="orange"
+            justify="space-between"
+            align="center"
+          >
+            <Text fontSize="md">{education.school}</Text>
+            <Stack direction="row">
+              <IconButton
+                aria-label="Edit education entry"
+                icon={<EditIcon />}
+              />
+              <IconButton
+                aria-label="Delete education entry"
+                icon={<DeleteIcon />}
+                onClick={() => onDelete(education.id)}
+              />
+            </Stack>
+          </Flex>
+        ))}
         <Button
           leftIcon={<AddIcon />}
           colorScheme="orange"
           variant="solid"
           size="md"
-          onClick={onClick}
+          onClick={onDelete}
         >
           Education
         </Button>

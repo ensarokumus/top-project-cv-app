@@ -33,7 +33,6 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Mike Richards"
-          defaultValue={fullName}
           onChange={onChange}
         />
       </FormControl>
@@ -46,7 +45,6 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
           borderColor="orange"
           size="sm"
           placeholder="E.g. mike.richards@mail.com.au"
-          defaultValue={email}
           onChange={onChange}
         />
       </FormControl>
@@ -66,7 +64,6 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
             borderColor="orange"
             size="sm"
             placeholder="452 000 000"
-            defaultValue={phone}
             onChange={onChange}
             pl='2'
           />
@@ -81,7 +78,6 @@ function PersonalDetails({ onChange, fullName, email, phone, address }) {
           borderColor="orange"
           size="sm"
           placeholder="E.g. Sydney, NSW"
-          defaultValue={address}
           onChange={onChange}
         />
       </FormControl>

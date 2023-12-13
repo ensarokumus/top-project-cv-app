@@ -17,7 +17,7 @@ const example = {
       },
       {
         id: 2,
-        school: "Lane Cove Cammeraygal High School",
+        school: "Cammeraygal High School",
         degree: "Math/Science",
         startDate: "09/2005",
         endDate: "06/2009",
