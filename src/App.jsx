@@ -23,35 +23,52 @@ function App() {
     const { key } = e.target.dataset;
     setPersonalInfo({ ...personalInfo, [key]: e.target.value });
   }
-  
+
   // Education section interactivity
   const [educationsSection, setEducationsSection] = useState(
     example.sections.educations
   );
 
-  function handleEducationsSectionChange(e) {
-    const { key } = e.target.dataset;
-    setEducationsSection({ ...educationsSection, [key]: e.target.value });
-  }
-
-  const [isEditEducation, setEditEducation] = useState(false);
-
   // Deleting one of the education info entries
   function handleDeleteEntry(deleteEducationID) {
     setEducationsSection(
-      educationsSection.filter(e => e.id !== deleteEducationID)
+      educationsSection.filter((e) => e.id !== deleteEducationID)
     );
   }
 
-  let nextEducationId = 3;
+  // Adding a new education info entry
+  const [isEditEducation, setEditEducation] = useState(false);
+  const [nextEducationId, setNextEducationId] = useState(3);
+
+  function handleAddEducation() {
+    setEditEducation(!isEditEducation);
+    setEducationsSection((currentEducationSection) => {
+      return [...currentEducationSection, { id: nextEducationId }];
+    });
+    // setNextEducationId(nextEducationId => nextEducationId + 1);
+  }
+
+  function handleEducationsSectionChange(field, value) {
+    setEducationsSection((currentEducationSection) => {
+      return currentEducationSection.map((education) => {
+        if (education.id === nextEducationId) {
+          return { ...education, [field]: value };
+        }
+
+        return education;
+      });
+    });
+  }
+
+  console.log(educationsSection);
 
   function handleEditEducation() {
     setEditEducation(!isEditEducation);
   }
 
-  function handleSaveEducation() {
-    nextEducationId++;
-  }
+  // function handleSaveEducation() {
+  //   nextEducationId++;
+  // }
 
   // Experience section interactivity
   const [experiencesSection, setExperiencesSection] = useState(
@@ -97,10 +114,11 @@ function App() {
                 <Education
                   isEditEducation={isEditEducation}
                   educationsSection={educationsSection}
-                  onClick={handleEditEducation}
-                  onChange={handleEducationsSectionChange}
-                  onSave={handleSaveEducation}
                   onDelete={handleDeleteEntry}
+                  onAddEducation={handleAddEducation}
+                  onChange={handleEducationsSectionChange}
+                  // onSave={handleSaveEducation}
+                  onClick={handleEditEducation}
                 />
               </AccordionPanel>
             </AccordionItem>

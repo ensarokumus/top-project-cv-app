@@ -6,35 +6,22 @@ import {
   Button,
   Stack,
   Text,
-  Box,
   IconButton,
 } from "@chakra-ui/react";
 import { DeleteIcon, CloseIcon, AddIcon, EditIcon } from "@chakra-ui/icons";
-import example from "./example.jsx";
 
 function Education({
+  onDelete,
   isEditEducation,
+  onAddEducation,
+  onSave,
   educationsSection,
   onClick,
   onChange,
-  onSave,
-  onDelete,
 }) {
   if (isEditEducation == true) {
     return (
       <>
-        <FormControl mb="10px">
-          <FormLabel>School</FormLabel>
-          <Input
-            type="text"
-            data-key="school"
-            variant="flushed"
-            borderColor="orange"
-            size="sm"
-            placeholder="E.g. Sydney University"
-            onChange={onChange}
-          />
-        </FormControl>
         <FormControl mb="10px">
           <FormLabel>Degree</FormLabel>
           <Input
@@ -44,7 +31,19 @@ function Education({
             borderColor="orange"
             size="sm"
             placeholder="E.g. Computer Engineering"
-            onChange={onChange}
+            onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
+          />
+        </FormControl>
+        <FormControl mb="10px">
+          <FormLabel>School</FormLabel>
+          <Input
+            type="text"
+            data-key="school"
+            variant="flushed"
+            borderColor="orange"
+            size="sm"
+            placeholder="E.g. Sydney University"
+            onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
           />
         </FormControl>
         <Flex>
@@ -57,7 +56,7 @@ function Education({
               borderColor="orange"
               size="sm"
               placeholder="E.g. 09/2009"
-              onChange={onChange}
+              onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
             />
           </FormControl>
           <FormControl mb="10px">
@@ -69,7 +68,7 @@ function Education({
               borderColor="orange"
               size="sm"
               placeholder="E.g. 06/2013"
-              onChange={onChange}
+              onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
             />
           </FormControl>
         </Flex>
@@ -82,7 +81,7 @@ function Education({
             borderColor="orange"
             size="sm"
             placeholder="E.g. Sydney, NSW"
-            onChange={onChange}
+            onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
           />
         </FormControl>
         <Stack direction="row">
@@ -108,10 +107,7 @@ function Education({
             colorScheme="orange"
             variant="solid"
             size="sm"
-            onClick={() => {
-              onClick;
-              onSave;
-            }}
+            // onClick={onSave()}
           >
             Save
           </Button>
@@ -151,7 +147,7 @@ function Education({
           colorScheme="orange"
           variant="solid"
           size="md"
-          onClick={onDelete}
+          onClick={onAddEducation}
         >
           Education
         </Button>

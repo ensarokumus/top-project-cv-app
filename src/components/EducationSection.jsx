@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Divider, Text } from "@chakra-ui/react";
 
 function EducationSection({ educationsSection }) {
   const educationsList = educationsSection.map((education) => (
-    <Box key={education.degree}>
+    <Box key={education.id}>
       <Heading as="h3" fontSize="md" p="5" pb="0">
         {education.degree}
       </Heading>
