@@ -8,14 +8,17 @@ import {
   Text,
   IconButton,
 } from "@chakra-ui/react";
-import { DeleteIcon, CloseIcon, AddIcon, EditIcon, } from "@chakra-ui/icons";
+import { DeleteIcon, CloseIcon, AddIcon, EditIcon } from "@chakra-ui/icons";
 
 function Education({
   onDelete,
+  onDeleteEntry,
   isEditEducation,
   onAddEducation,
   onSave,
+  onEdit,
   educationsSection,
+  activeForm,
   onCancel,
   onChange,
 }) {
@@ -31,6 +34,7 @@ function Education({
             borderColor="orange"
             size="sm"
             placeholder="E.g. Computer Engineering"
+            defaultValue={activeForm[0].degree}
             onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
           />
         </FormControl>
@@ -90,9 +94,11 @@ function Education({
             colorScheme="orange"
             variant="outline"
             size="sm"
+            onClick={onDeleteEntry}
           >
             Delete
           </Button>
+          P
           <Button
             leftIcon={<CloseIcon />}
             colorScheme="orange"
@@ -117,7 +123,7 @@ function Education({
   } else {
     return (
       <Flex direction="column">
-        {educationsSection.map(education => (
+        {educationsSection.map((education) => (
           <Flex
             key={education.id}
             p="2"
@@ -133,6 +139,7 @@ function Education({
               <IconButton
                 aria-label="Edit education entry"
                 icon={<EditIcon />}
+                onClick={() => onEdit(education.id)}
               />
               <IconButton
                 aria-label="Delete education entry"

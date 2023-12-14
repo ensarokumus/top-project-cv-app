@@ -29,14 +29,8 @@ function App() {
     example.sections.educations
   );
 
-  console.log(educationsSection);
-
-  function handleEditEducation() {
-    setEditEducation(!isEditEducation);
-  }
-
   // Deleting one of the education info entries
-  function handleDeleteEntry(deleteEducationID) {
+  function handleDelete(deleteEducationID) {
     setEducationsSection(
       educationsSection.filter((e) => e.id !== deleteEducationID)
     );
@@ -69,15 +63,66 @@ function App() {
   function handleSaveEducation() {
     setNextEducationId((nextEducationId) => nextEducationId + 1);
     setEditEducation(!isEditEducation);
+    setActiveForm([{
+      id: "",
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    }]);
   }
 
   // Cancelling the new education info entry
   function handleCancelEducation() {
     setEditEducation(!isEditEducation);
+    if (nextEducationId === educationsSection.length) {
+      setEducationsSection(
+        educationsSection.filter((e) => e.id !== nextEducationId)
+      );
+    }
+    setActiveForm([{
+      id: "",
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    }]);
+  }
+
+  // Deleting the new education info entry
+  function handleDeleteEntry() {
+    setEditEducation(!isEditEducation);
     setEducationsSection(
       educationsSection.filter((e) => e.id !== nextEducationId)
     );
+    setActiveForm([{
+      id: "",
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    }]);
   }
+
+  // Editing an old education info entry
+  const [activeForm, setActiveForm] = useState([{
+    id: "",
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+  }]);
+
+  function handleEditEducation(editEducationID) {
+    setEditEducation(!isEditEducation);
+    setActiveForm(educationsSection.filter((e) => e.id === editEducationID));
+  }
+  console.log(activeForm);
+  console.log(educationsSection);
 
   // Experience section interactivity
   const [experiencesSection, setExperiencesSection] = useState(
@@ -123,11 +168,14 @@ function App() {
                 <Education
                   isEditEducation={isEditEducation}
                   educationsSection={educationsSection}
-                  onDelete={handleDeleteEntry}
+                  activeForm={activeForm}
+                  onDelete={handleDelete}
+                  onDeleteEntry={handleDeleteEntry}
                   onAddEducation={handleAddEducation}
                   onChange={handleEducationsSectionChange}
                   onSave={handleSaveEducation}
                   onCancel={handleCancelEducation}
+                  onEdit={handleEditEducation}
                 />
               </AccordionPanel>
             </AccordionItem>
