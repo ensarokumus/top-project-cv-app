@@ -29,6 +29,12 @@ function App() {
     example.sections.educations
   );
 
+  console.log(educationsSection);
+
+  function handleEditEducation() {
+    setEditEducation(!isEditEducation);
+  }
+
   // Deleting one of the education info entries
   function handleDeleteEntry(deleteEducationID) {
     setEducationsSection(
@@ -45,7 +51,6 @@ function App() {
     setEducationsSection((currentEducationSection) => {
       return [...currentEducationSection, { id: nextEducationId }];
     });
-    // setNextEducationId(nextEducationId => nextEducationId + 1);
   }
 
   function handleEducationsSectionChange(field, value) {
@@ -60,15 +65,19 @@ function App() {
     });
   }
 
-  console.log(educationsSection);
-
-  function handleEditEducation() {
+  // Saving the new education info entry
+  function handleSaveEducation() {
+    setNextEducationId((nextEducationId) => nextEducationId + 1);
     setEditEducation(!isEditEducation);
   }
 
-  // function handleSaveEducation() {
-  //   nextEducationId++;
-  // }
+  // Cancelling the new education info entry
+  function handleCancelEducation() {
+    setEditEducation(!isEditEducation);
+    setEducationsSection(
+      educationsSection.filter((e) => e.id !== nextEducationId)
+    );
+  }
 
   // Experience section interactivity
   const [experiencesSection, setExperiencesSection] = useState(
@@ -117,8 +126,8 @@ function App() {
                   onDelete={handleDeleteEntry}
                   onAddEducation={handleAddEducation}
                   onChange={handleEducationsSectionChange}
-                  // onSave={handleSaveEducation}
-                  onClick={handleEditEducation}
+                  onSave={handleSaveEducation}
+                  onCancel={handleCancelEducation}
                 />
               </AccordionPanel>
             </AccordionItem>

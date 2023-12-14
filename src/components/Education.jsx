@@ -8,7 +8,7 @@ import {
   Text,
   IconButton,
 } from "@chakra-ui/react";
-import { DeleteIcon, CloseIcon, AddIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon, CloseIcon, AddIcon, EditIcon, } from "@chakra-ui/icons";
 
 function Education({
   onDelete,
@@ -16,7 +16,7 @@ function Education({
   onAddEducation,
   onSave,
   educationsSection,
-  onClick,
+  onCancel,
   onChange,
 }) {
   if (isEditEducation == true) {
@@ -98,7 +98,7 @@ function Education({
             colorScheme="orange"
             variant="outline"
             size="sm"
-            onClick={onClick}
+            onClick={onCancel}
           >
             Cancel
           </Button>
@@ -107,7 +107,7 @@ function Education({
             colorScheme="orange"
             variant="solid"
             size="sm"
-            // onClick={onSave()}
+            onClick={onSave}
           >
             Save
           </Button>
