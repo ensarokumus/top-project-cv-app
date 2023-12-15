@@ -63,14 +63,16 @@ function App() {
   function handleSaveEducation() {
     setNextEducationId((nextEducationId) => nextEducationId + 1);
     setEditEducation(!isEditEducation);
-    setActiveForm([{
-      id: "",
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-    }]);
+    setActiveForm([
+      {
+        id: "",
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+        location: "",
+      },
+    ]);
   }
 
   // Cancelling the new education info entry
@@ -81,14 +83,16 @@ function App() {
         educationsSection.filter((e) => e.id !== nextEducationId)
       );
     }
-    setActiveForm([{
-      id: "",
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-    }]);
+    setActiveForm([
+      {
+        id: "",
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+        location: "",
+      },
+    ]);
   }
 
   // Deleting the new education info entry
@@ -97,25 +101,29 @@ function App() {
     setEducationsSection(
       educationsSection.filter((e) => e.id !== nextEducationId)
     );
-    setActiveForm([{
+    setActiveForm([
+      {
+        id: "",
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+        location: "",
+      },
+    ]);
+  }
+
+  // Editing an old education info entry
+  const [activeForm, setActiveForm] = useState([
+    {
       id: "",
       school: "",
       degree: "",
       startDate: "",
       endDate: "",
       location: "",
-    }]);
-  }
-
-  // Editing an old education info entry
-  const [activeForm, setActiveForm] = useState([{
-    id: "",
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-  }]);
+    },
+  ]);
 
   function handleEditEducation(editEducationID) {
     setEditEducation(!isEditEducation);
@@ -138,10 +146,7 @@ function App() {
     <Flex>
       <Box minW="500px">
         <PersonalDetails
-          fullName={personalInfo.name}
-          email={personalInfo.email}
-          phone={personalInfo.phone}
-          address={personalInfo.address}
+          personalInfo={personalInfo}
           onChange={handlePersonalInfoChange}
         />
         <Accordion allowToggle>
