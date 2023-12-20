@@ -34,7 +34,7 @@ function Education({
             borderColor="orange"
             size="sm"
             placeholder="E.g. Computer Engineering"
-            defaultValue={activeForm[0].degree}
+            value={activeForm[0].degree}
             onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
           />
         </FormControl>
@@ -47,7 +47,8 @@ function Education({
             borderColor="orange"
             size="sm"
             placeholder="E.g. Sydney University"
-            onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
+            value={activeForm[0].school}
+            onChange={(e) => onChange(e.target.dataset.key, e.target.value, activeForm[0].id)}
           />
         </FormControl>
         <Flex>
@@ -60,7 +61,8 @@ function Education({
               borderColor="orange"
               size="sm"
               placeholder="E.g. 09/2009"
-              onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
+              value={activeForm[0].startDate}
+              onChange={(e) => onChange(e.target.dataset.key, e.target.value, activeForm[0].id)}
             />
           </FormControl>
           <FormControl mb="10px">
@@ -72,7 +74,8 @@ function Education({
               borderColor="orange"
               size="sm"
               placeholder="E.g. 06/2013"
-              onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
+              value={activeForm[0].endDate}
+              onChange={(e) => onChange(e.target.dataset.key, e.target.value, activeForm[0].id)}
             />
           </FormControl>
         </Flex>
@@ -85,6 +88,7 @@ function Education({
             borderColor="orange"
             size="sm"
             placeholder="E.g. Sydney, NSW"
+            value={activeForm[0].location}
             onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
           />
         </FormControl>

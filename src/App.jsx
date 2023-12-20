@@ -39,24 +39,77 @@ function App() {
   // Adding a new education info entry
   const [isEditEducation, setEditEducation] = useState(false);
   const [nextEducationId, setNextEducationId] = useState(3);
+  const [activeForm, setActiveForm] = useState([
+    {
+      id: "",
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    },
+  ]);
 
   function handleAddEducation() {
     setEditEducation(!isEditEducation);
     setEducationsSection((currentEducationSection) => {
-      return [...currentEducationSection, { id: nextEducationId }];
+      return [
+        ...currentEducationSection,
+        {
+          id: nextEducationId,
+          school: "",
+          degree: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+        },
+      ];
+    });
+    setActiveForm(() => {
+      return [
+        {
+          id: nextEducationId,
+          school: "",
+          degree: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+        },
+      ];
     });
   }
 
   function handleEducationsSectionChange(field, value) {
     setEducationsSection((currentEducationSection) => {
       return currentEducationSection.map((education) => {
-        if (education.id === nextEducationId) {
+        if (education.id === activeForm[0].id) {
           return { ...education, [field]: value };
         }
 
         return education;
       });
     });
+
+    setActiveForm((currentEducationSection) => {
+      return currentEducationSection.map((education) => {
+        if (education.id === activeForm[0].id) {
+          return { ...education, [field]: value };
+        }
+
+        return education;
+      });
+    });
+  }
+
+  console.log(activeForm);
+  console.log(educationsSection);
+  console.log(educationsSection.filter((e) => e.id === activeForm[0].id));
+
+  // Editing an old education info entry
+
+  function handleEditEducation(editEducationID) {
+    setEditEducation(!isEditEducation);
+    setActiveForm(educationsSection.filter((e) => e.id === editEducationID));
   }
 
   // Saving the new education info entry
@@ -78,11 +131,12 @@ function App() {
   // Cancelling the new education info entry
   function handleCancelEducation() {
     setEditEducation(!isEditEducation);
-    if (nextEducationId === educationsSection.length) {
-      setEducationsSection(
-        educationsSection.filter((e) => e.id !== nextEducationId)
-      );
-    }
+    // SIKINTILI
+
+    setEducationsSection(
+      educationsSection.filter((e) => e.id !== nextEducationId)
+    );
+
     setActiveForm([
       {
         id: "",
@@ -112,25 +166,6 @@ function App() {
       },
     ]);
   }
-
-  // Editing an old education info entry
-  const [activeForm, setActiveForm] = useState([
-    {
-      id: "",
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-    },
-  ]);
-
-  function handleEditEducation(editEducationID) {
-    setEditEducation(!isEditEducation);
-    setActiveForm(educationsSection.filter((e) => e.id === editEducationID));
-  }
-  console.log(activeForm);
-  console.log(educationsSection);
 
   // Experience section interactivity
   const [experiencesSection, setExperiencesSection] = useState(
