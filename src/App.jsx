@@ -101,16 +101,16 @@ function App() {
     });
   }
 
-  console.log(activeForm);
-  console.log(educationsSection);
-  console.log(educationsSection.filter((e) => e.id === activeForm[0].id));
-
   // Editing an old education info entry
+  const [beforeEdit, setBeforeEdit] = useState("");
 
   function handleEditEducation(editEducationID) {
     setEditEducation(!isEditEducation);
     setActiveForm(educationsSection.filter((e) => e.id === editEducationID));
+    setBeforeEdit(educationsSection.filter((e) => e.id === editEducationID));
   }
+
+  console.log(activeForm[0].id);
 
   // Saving the new education info entry
   function handleSaveEducation() {
@@ -131,11 +131,32 @@ function App() {
   // Cancelling the new education info entry
   function handleCancelEducation() {
     setEditEducation(!isEditEducation);
-    // SIKINTILI
 
-    setEducationsSection(
-      educationsSection.filter((e) => e.id !== nextEducationId)
-    );
+    if (
+      educationsSection[educationsSection.length - 1].id === activeForm[0].id
+    ) {
+      setEducationsSection(
+        educationsSection.filter((e) => e.id !== nextEducationId)
+      );
+    } else {
+      setEducationsSection((currentEducationSection) => {
+        return currentEducationSection.map((education) => {
+          if (education.id === beforeEdit[0].id) {
+            return {
+              ...education,
+              id: beforeEdit[0].id,
+              school: beforeEdit[0].school,
+              degree: beforeEdit[0].degree,
+              startDate: beforeEdit[0].startDate,
+              endDate: beforeEdit[0].endDate,
+              location: beforeEdit[0].location,
+            };
+          }
+
+          return education;
+        });
+      });
+    }
 
     setActiveForm([
       {
@@ -153,7 +174,7 @@ function App() {
   function handleDeleteEntry() {
     setEditEducation(!isEditEducation);
     setEducationsSection(
-      educationsSection.filter((e) => e.id !== nextEducationId)
+      educationsSection.filter((e) => e.id !== activeForm[0].id)
     );
     setActiveForm([
       {
