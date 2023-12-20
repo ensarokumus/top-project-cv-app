@@ -11,16 +11,16 @@ import {
 import { DeleteIcon, CloseIcon, AddIcon, EditIcon } from "@chakra-ui/icons";
 
 function Education({
-  onDelete,
-  onDeleteEntry,
   isEditEducation,
-  onAddEducation,
-  onSave,
-  onEdit,
   educationsSection,
   activeForm,
-  onCancel,
+  onDelete,
+  onDeleteEntry,
+  onAddEducation,
   onChange,
+  onSave,
+  onCancel,
+  onEdit,
 }) {
   if (isEditEducation == true) {
     return (
@@ -48,7 +48,7 @@ function Education({
             size="sm"
             placeholder="E.g. Sydney University"
             value={activeForm[0].school}
-            onChange={(e) => onChange(e.target.dataset.key, e.target.value, activeForm[0].id)}
+            onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
           />
         </FormControl>
         <Flex>
@@ -62,7 +62,7 @@ function Education({
               size="sm"
               placeholder="E.g. 09/2009"
               value={activeForm[0].startDate}
-              onChange={(e) => onChange(e.target.dataset.key, e.target.value, activeForm[0].id)}
+              onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
             />
           </FormControl>
           <FormControl mb="10px">
@@ -75,7 +75,7 @@ function Education({
               size="sm"
               placeholder="E.g. 06/2013"
               value={activeForm[0].endDate}
-              onChange={(e) => onChange(e.target.dataset.key, e.target.value, activeForm[0].id)}
+              onChange={(e) => onChange(e.target.dataset.key, e.target.value)}
             />
           </FormControl>
         </Flex>
