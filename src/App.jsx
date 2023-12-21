@@ -244,10 +244,7 @@ function App() {
   function handleCancelEducation() {
     setEditEducation(!isEditEducation);
 
-    if (
-      educationsSection[educationsSection.length - 1].id === activeForm[0].id &&
-      nextEducationId - 1 !== educationsSection.length
-    ) {
+    if (nextEducationId === activeForm[0].id) {
       setEducationsSection(
         educationsSection.filter((e) => e.id !== nextEducationId)
       );
@@ -287,11 +284,7 @@ function App() {
   function handleCancelExperience() {
     setEditExperience(!isEditExperience);
 
-    if (
-      experiencesSection[experiencesSection.length - 1].id ===
-      activeExperienceForm[0].id &&
-      nextExperienceId - 1 !== experiencesSection.length
-    ) {
+    if (nextExperienceId === activeExperienceForm[0].id) {
       setExperiencesSection(
         experiencesSection.filter((e) => e.id !== nextExperienceId)
       );
