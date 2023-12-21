@@ -1,3 +1,6 @@
+## Live preview: 
+https://statuesque-monstera-dae488.netlify.app/
+
 # top-project-cv-app
 A The Odin Project project for creating a simple cv builder app with React.
 
